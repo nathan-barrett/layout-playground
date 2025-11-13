@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firefox Newtab Layout Playground</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Firefox Newtab Layout Playground</h1>
+            <p>Drag and drop cards to create custom layouts. Generate layout configuration objects for different breakpoints.</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Card Palette -->
+            <aside class="card-palette">
+                <h2>Card Sizes</h2>
+                <div class="palette-cards">
+                    <div class="palette-card small-card" draggable="true" data-size="small">
+                        <div class="card-preview">
+                            <div class="card-image"></div>
+                            <div class="card-content">
+                                <div class="card-title">Small</div>
+                            </div>
+                        </div>
+                        <span class="card-label">1×1 (Horizontal)</span>
+                    </div>
+                    <div class="palette-card medium-card" draggable="true" data-size="medium">
+                        <div class="card-preview">
+                            <div class="card-image"></div>
+                            <div class="card-content">
+                                <div class="card-title">Medium</div>
+                            </div>
+                        </div>
+                        <span class="card-label">2×1 (Vertical)</span>
+                    </div>
+                    <div class="palette-card large-card" draggable="true" data-size="large">
+                        <div class="card-preview">
+                            <div class="card-image"></div>
+                            <div class="card-content">
+                                <div class="card-title">Large</div>
+                            </div>
+                        </div>
+                        <span class="card-label">2×2 (Hero)</span>
+                    </div>
+                </div>
+
+                <div class="options">
+                    <h3>Card Options</h3>
+                    <label>
+                        <input type="checkbox" id="hasExcerpt" checked>
+                        Show Excerpt
+                    </label>
+                    <label>
+                        <input type="checkbox" id="hasAd">
+                        Is Sponsored (SPOC)
+                    </label>
+                </div>
+            </aside>
+
+            <!-- Layout Grid -->
+            <main class="layout-section">
+                <div class="breakpoint-tabs">
+                    <button class="tab-btn active" data-columns="4">4 Columns (≥1374px)</button>
+                    <button class="tab-btn" data-columns="3">3 Columns (≥1122px)</button>
+                    <button class="tab-btn" data-columns="2">2 Columns (≥724px)</button>
+                    <button class="tab-btn" data-columns="1">1 Column (Mobile)</button>
+                </div>
+
+                <div class="layout-grid" id="layoutGrid" data-columns="4">
+                    <div class="grid-info">
+                        <p>Drop cards here to build your layout</p>
+                    </div>
+                </div>
+
+                <div class="layout-actions">
+                    <button id="clearLayout" class="btn btn-secondary">Clear Layout</button>
+                    <button id="generateCode" class="btn btn-primary">Generate Layout Code</button>
+                </div>
+            </main>
+
+            <!-- Code Output -->
+            <aside class="code-output">
+                <h2>Generated Layout</h2>
+                <div class="output-tabs">
+                    <button class="output-tab active" data-output="current">Current Breakpoint</button>
+                    <button class="output-tab" data-output="all">All Breakpoints</button>
+                </div>
+                <pre id="codeOutput"><code>{
+  "columnCount": 4,
+  "tiles": []
+}</code></pre>
+                <button id="copyCode" class="btn btn-copy">Copy to Clipboard</button>
+            </aside>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
