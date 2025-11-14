@@ -191,7 +191,7 @@ header p {
 /* Layout Section */
 .layout-section {
     background: var(--card-bg);
-    padding: 20px;
+    padding: 20px 0;
     border-radius: 8px;
     box-shadow: var(--shadow);
     width: 100%;
@@ -201,7 +201,7 @@ header p {
 .breakpoint-tabs {
     display: flex;
     gap: 8px;
-    margin-bottom: 20px;
+    margin: 0 20px 20px;
     border-bottom: 2px solid var(--border-color);
 }
 
@@ -232,7 +232,7 @@ header p {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 16px;
+    margin: 0 20px 16px;
     padding: 12px;
     background: var(--bg-color);
     border-radius: 6px;
@@ -272,7 +272,7 @@ header p {
 /* Validation Message */
 .validation-message {
     padding: 12px 16px;
-    margin-bottom: 16px;
+    margin: 0 20px 16px;
     border-radius: 6px;
     font-size: 0.9rem;
     line-height: 1.5;
@@ -488,7 +488,7 @@ header p {
 .layout-actions {
     display: flex;
     gap: 12px;
-    margin-top: 20px;
+    margin: 20px 20px 0;
     justify-content: flex-end;
 }
 
