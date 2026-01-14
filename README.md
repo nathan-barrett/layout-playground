@@ -7,7 +7,7 @@ Visual tool for designing and generating Firefox Newtab card section layouts.
 - Drag and drop cards to design layouts
 - Three card sizes: Small (1×1), Medium (2×1), and Large (2×2)
 - Design for all 4 Firefox breakpoints (1, 2, 3, and 4 columns)
-- Configure hasExcerpt and hasAd (SPOC) properties
+- Configure hasExcerpt, hasAd (SPOC), and allowsWidget properties
 - Drag cards to reorder them
 - Generate layout configuration objects
 - Output for single breakpoint or all breakpoints
@@ -26,7 +26,7 @@ npx serve
 
 ## How to Use
 
-1. Configure card options in the left sidebar (excerpt, SPOC)
+1. Configure card options in the left sidebar (excerpt, SPOC, widget)
 2. Select a breakpoint tab (1-4 columns)
 3. Drag cards from the palette into the grid
 4. Rearrange cards by dragging them
@@ -55,6 +55,7 @@ Generated code can be pasted into `SectionsLayoutManager.sys.mjs`.
 - `position`: Content position in the data array (0-indexed)
 - `hasAd`: Whether this position shows sponsored content (SPOC)
 - `hasExcerpt`: Whether to display the article excerpt
+- `allowsWidget`: Whether this position allows widget content
 
 All breakpoints must have the same number of tiles.
 
