@@ -8,8 +8,9 @@ const state = {
         4: []
     },
     options: {
-        hasExcerpt: true,
-        hasAd: false
+        hasExcerpt: false,
+        hasAd: false,
+        allowsWidget: false
     },
     outputMode: 'current' // 'current' or 'all'
 };
@@ -24,6 +25,7 @@ const copyBtn = document.getElementById('copyCode');
 const downloadCodeBtn = document.getElementById('downloadCode');
 const hasExcerptCheckbox = document.getElementById('hasExcerpt');
 const hasAdCheckbox = document.getElementById('hasAd');
+const allowsWidgetCheckbox = document.getElementById('allowsWidget');
 const paletteCards = document.querySelectorAll('.palette-card');
 const validationMessage = document.getElementById('validationMessage');
 const outputValidationMessage = document.getElementById('outputValidationMessage');
@@ -220,7 +222,8 @@ function addCard(size) {
             size: cardSize,
             position: position,
             hasAd: canBeAd ? state.options.hasAd : false,
-            hasExcerpt: state.options.hasExcerpt
+            hasExcerpt: state.options.hasExcerpt,
+            allowsWidget: state.options.allowsWidget
         });
     });
 
@@ -315,6 +318,7 @@ function createCardElement(card, index) {
         <div class="card-badges">
             ${card.hasAd ? '<span class="badge ad">SPOC</span>' : ''}
             ${card.hasExcerpt ? '<span class="badge excerpt">Excerpt</span>' : ''}
+            ${card.allowsWidget ? '<span class="badge widget">Widget</span>' : ''}
         </div>
         <button class="card-remove" onclick="removeCard(${index})">×</button>
     `;
@@ -536,7 +540,8 @@ function updateCodeOutput() {
                 size: card.size,
                 position: card.position,
                 hasAd: card.hasAd,
-                hasExcerpt: card.hasExcerpt
+                hasExcerpt: card.hasExcerpt,
+                allowsWidget: card.allowsWidget
             }))
         };
 
@@ -610,7 +615,8 @@ function updateCodeOutput() {
                     size: card.size,
                     position: card.position,
                     hasAd: card.hasAd,
-                    hasExcerpt: card.hasExcerpt
+                    hasExcerpt: card.hasExcerpt,
+                    allowsWidget: card.allowsWidget
                 }))
             });
         });
@@ -662,7 +668,7 @@ function generatePythonCode(validationErrors) {
 
         state.layouts[cols].forEach((card, cardIndex) => {
             const sizeEnum = `TileSize.${card.size.toUpperCase()}`;
-            python += `                Tile(size=${sizeEnum}, position=${card.position}, hasAd=${card.hasAd ? 'True' : 'False'}, hasExcerpt=${card.hasExcerpt ? 'True' : 'False'})`;
+            python += `                Tile(size=${sizeEnum}, position=${card.position}, hasAd=${card.hasAd ? 'True' : 'False'}, hasExcerpt=${card.hasExcerpt ? 'True' : 'False'}, allowsWidget=${card.allowsWidget ? 'True' : 'False'})`;
             if (cardIndex < state.layouts[cols].length - 1) {
                 python += ',';
             }
@@ -742,6 +748,10 @@ function setupCheckboxes() {
 
     hasAdCheckbox.addEventListener('change', (e) => {
         state.options.hasAd = e.target.checked;
+    });
+
+    allowsWidgetCheckbox.addEventListener('change', (e) => {
+        state.options.allowsWidget = e.target.checked;
     });
 }
 

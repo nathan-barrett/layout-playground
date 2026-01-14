@@ -456,6 +456,11 @@ header p {
     color: #0284c7;
 }
 
+.badge.widget {
+    background: #f0e6ff;
+    color: #7c3aed;
+}
+
 .card-remove {
     position: absolute;
     top: 8px;
